@@ -1,4 +1,3 @@
-import Axios from 'axios';
 
 export const getUser = (formtype, formvalue) => {
 	return {

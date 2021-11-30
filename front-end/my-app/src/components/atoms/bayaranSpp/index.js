@@ -1,12 +1,13 @@
 import React from 'react';
+
 // Components
 import { Gap } from '..';
-const Spp = ({style, dataUser}) => {
+const Spp = ({Stylee, dataUser}) => {
     const spp = ["Januari", "Februari", "Maret", "April", "Mei"," Juni", "Juli","Agustus", "September", "Oktober", "November", "Desember"];
     
     return (
         <>
-            <div className={`${style} mb-20`}>
+            <div className={`${Stylee} mb-20`}>
                 <div>
                     {
                         spp.map((data, index) => {

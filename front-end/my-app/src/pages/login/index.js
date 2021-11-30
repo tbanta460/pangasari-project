@@ -1,14 +1,13 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate, Redirect } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import Axios from 'axios';
 
 
 // import {withHooks } from "react-router-dom"
 import { useSelector, useDispatch} from 'react-redux';
-import { setLogin, loginPost, getUserById } from '../../config/redux/action/setform.js'
+import { setLogin, loginPost } from '../../config/redux/action/setform.js'
 import { getUser } from '../../config/redux/action/getUser.js'
-import { getError } from '../../config/redux/action/getError.js'
 
 // Assets
 import { ImgLogin } from '../../assets';
@@ -18,7 +17,6 @@ import { Image, Button, Input, Gap } from '../../components/atoms';
 
 const Login = () => {
     const [error, setError] = useState("")
-    const [user, setUser] = useState("")
     const navigate = useNavigate();
     const { login } = useSelector(state => state.SetForm);
 
@@ -100,7 +98,6 @@ const Login = () => {
                     resolve(false);
                 } else {
                     const user = respone.data.data
-                    await setUser(user._id)
                     await sendObj(user)
                     await Cookies.set('user', user._id);
                     window.location.assign(`http://localhost:3000/user/dashboard/${user.firstName+"_"+user.lastName.split(" ").filter(e => e).join("_")}`)
@@ -140,7 +137,7 @@ const Login = () => {
             <div>
                 <div className="flex flex-row-reverse">
                     <div className="w-11/12 bg-black lg:block hidden">
-                        <Image style="h-screen opacity-10"src={ImgLogin} alt="Gambar latar belakang untuk login" />
+                        <Image Stylee="h-screen opacity-10"src={ImgLogin} alt="Gambar latar belakang untuk login" />
                     </div>
                     <div className="w-screen bg-white pb-14">
                         <div className="sm:p-14 p-5">
@@ -160,7 +157,7 @@ const Login = () => {
                             </div>
                             <div>
                                 <Gap WH="h-10" />
-                                <Button type="submit" style="bg-blue px-7 py-4 text-white rounded-full" title="Masuk" onClick={handleSubmit}/>
+                                <Button type="submit" Stylee="bg-blue px-7 py-4 text-white rounded-full" title="Masuk" onClick={handleSubmit}/>
                                 <span className="mx-8 cursor-pointer" onClick={() => navigate('/register')}>Don't have an account?</span>
                             </div>
                         </div>

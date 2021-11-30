@@ -17,7 +17,7 @@ const SideBar = () => {
                 <div className="my-12 rounded-xl bg-white w-full p-3">
                     <span className="font-bold">List Pelajaran</span>
                     <div>
-                        <ListMenu isStyle="grid grid-cols-2" array={pelajaran} style="" />
+                        <ListMenu isStyle="grid grid-cols-2" array={pelajaran} />
                         
                     </div>
                 </div>

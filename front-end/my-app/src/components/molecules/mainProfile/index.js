@@ -1,5 +1,4 @@
 import React, { useEffect, useState,Fragment } from 'react';
-import { useSelector } from 'react-redux'; 
 import Axios from 'axios'
 
 // Components
@@ -50,23 +49,23 @@ const Main = ({value, kelas ,array, dataId, arrayForMobile,...rest}) => {
                         {
 
                             user.map((data,index) => {
-                                return <ListTeman listFriends={data} style={value === array[0]? "block" : "hidden" }nilaiQuizz={array}data={dataId} mobileStyle={arrayForMobile.indexOf(arrayForMobile[0]).toString() === value ? "block" : "hidden"} checkMobile={arrayForMobile} key={index}/>
+                                return <ListTeman listFriends={data} Stylee={value === array[0]? "block" : "hidden" }nilaiQuizz={array}data={dataId} mobileStyle={arrayForMobile.indexOf(arrayForMobile[0]).toString() === value ? "block" : "hidden"} checkMobile={arrayForMobile} key={index}/>
                             })
                         }
                     </div>
                     <div className={`${value === array[0] || checkIsMobile ? "block" : "hidden"} justify-self-center my-14 self-center flex items-center sm:pb-0 pb-20 `}>
-                        <Button title="Previos" style="bg-blue px-5 text-white" onClick={handlePrevios}/>
+                        <Button title="Previos" Stylee="bg-blue px-5 text-white" onClick={handlePrevios}/>
                         <Gap WH="w-8" />
                         {currentPage +" / "+ totalPage}
                         <Gap WH="w-8" />
-                        <Button title="Next" style="bg-blue px-5 text-white" onClick={handleNext}/>
+                        <Button title="Next" Stylee="bg-blue px-5 text-white" onClick={handleNext}/>
                     </div>
                 </div>
                 <div>
                     <NilaiUlangan data={dataId} ForStyle={value === array[1] || checkIsMobileScore ? "block" : "hidden"}/>
                 </div>
                 <div>
-                    <Spp style={value === array[2] || checkIsMobilePayment ? "block" : "hidden"} dataUser={user}/>
+                    <Spp Stylee={value === array[2] || checkIsMobilePayment ? "block" : "hidden"} dataUser={user}/>
                 </div>
             </div>
         </>

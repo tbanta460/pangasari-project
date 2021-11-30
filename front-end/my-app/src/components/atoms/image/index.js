@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Image = ({src,  iStyle, isStyle,style ,eventEnter, eventOut,...rest }) => {
+const Image = ({src, isStyle,Stylee,...rest }) => {
    
     
     return (
         <>
             <div className={isStyle} >
-                <img src={src} {...rest} className={`unupload bg-no-repeat bg-center bg-cover ${style}`} />
+                <img src={src} {...rest} className={`unupload bg-no-repeat bg-center bg-cover ${Stylee}`} />
             </div>
             
         </>

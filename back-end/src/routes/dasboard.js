@@ -13,6 +13,5 @@ router.post('/dashboard', require('../middleware/middleware.js'), (req,res,next)
 router.get('/dashboard/:userId', dashboardController.getUserById);
 router.get('/dashboards/:kelas', dashboardController.getUserByKelas);
 router.put('/dashboard/:user', dashboardController.updateData);
-router.put('/dashboard/:id', dashboardController.updateQuizizz);
 
 module.exports = router

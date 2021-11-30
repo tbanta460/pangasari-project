@@ -99,30 +99,16 @@ exports.updateData = (req,res,next) => {
 			user.image = req.file.path
 		}
 		user.point = point
-		user.save()
+		return user.save()
 		
 	})
 	.then(respone => {
-		console.log(respone, "data berhasil diperbarui")
 		res.status(200).json({
 			message: "Data berhasil diperbarui",
 			data: respone
 		})
 	})
 	.catch(err => console.log(err))
-}
-
-exports.updateQuizizz = (req,res,next) => {
-	const errors = validationResult(req);
-	const idUser = req.params.id
-	if(!errors.isEmpty()){
-		const message = "Terjadi kesalahan saat menyelesaikan Quiz"
-		const status = 404
-		isError(errors, status, message)
-	}
-	User.findById(idUser)
-	.then(respone => console.log(respone, "from update quiz"))
-	.catch(err => console.log(err));
 }
 
 const isError = (errors, status, message) => {

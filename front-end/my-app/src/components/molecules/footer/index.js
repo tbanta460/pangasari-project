@@ -41,7 +41,7 @@ const Footer = () => {
                                     return (
                                         <>
                                             <li>
-                                                <Image src={data} alt="icon social media" style="w-10 cursor-pointer"/>
+                                                <Image src={data} alt="icon social media" Stylee="w-10 cursor-pointer"/>
                                             </li>
                                             <Gap WH="w-5"/>
                                         </>

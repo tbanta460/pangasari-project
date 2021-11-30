@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Cookies from 'js-cookie';
-import Axios from 'axios';
-
 
 import { getUserById, updateUser } from '../../config/redux/action/setform.js'
 // Componnets
@@ -20,14 +18,16 @@ const UlanganHarian = () => {
 	const [count, setCount] = useState(0)
 	const [start, setStart] = useState(false);
 	const [finish, setFinish] = useState(false);
-	const [removeInterval, setRemoveInterval] = useState(null)
 	
-	useEffect(async () => {
-		const getUser = await Cookies.get('user');
-		if(getUser !== undefined){
-			const user = await getUserById('user/dashboard', getUser);
-			setIsUser(user.data.data);
+	useEffect(() => {
+		const user = async () => {
+			const getUser = await Cookies.get('user');
+			if(getUser !== undefined){
+				const user = await getUserById('user/dashboard', getUser);
+				setIsUser(user.data.data);
+			}
 		}
+		user();
 	},[])
 	const nextButton = async (e) => {
 		
@@ -48,7 +48,6 @@ const UlanganHarian = () => {
 				setFinish(true)
 			}
 		}else if(e.target.textContent === "Submit"){
-			if(removeInterval !== null)  await clearInterval(removeInterval) 
 			submitQuiz()
 			
 		}
@@ -87,7 +86,6 @@ const UlanganHarian = () => {
 	}
 	const handleAnswerBtn = (e) => {
 		const targetCorrect = e.target.dataset.correct;
-		const targetText = e.target.textContent;
 		const elBtn = handleRefs.current.children
 		
 		if(count < 1){
@@ -133,17 +131,17 @@ const UlanganHarian = () => {
 			<div className="mt-14 w-11/12 md:w-2/3 mx-auto bg-red-900 p-10 items-center rounded-lg flex justify-center flex-col">
 				<div className="question text-white font-bold text-sm md:text-xl">{isQuestion}</div>
 				<div className={`answer grid grid-cols-2 gap-5 my-10 ${start ? "block" : "hidden"}`} ref={handleRefs}>
-					<Button style={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
-					<Button style={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
-					<Button style={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
-					<Button style={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
+					<Button Stylee={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
+					<Button Stylee={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
+					<Button Stylee={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
+					<Button Stylee={`bg-blue px-5 py-2 text-white text-sm md:text-lg`} onClick={handleAnswerBtn} data-correct=""/>
 				</div>
 				<div className={` ${start ? "block" :"hidden"}`}>
-					<Button type="submit" title={finish ? "Submit" : "Next"} style="font-bold bg-yellow p-4 px-14" onClick={nextButton}/>
+					<Button type="submit" title={finish ? "Submit" : "Next"} Stylee="font-bold bg-yellow p-4 px-14" onClick={nextButton}/>
 					
 				</div>
 				<div className={`${start ? "hidden" : "block"}`}>
-					<Button title="Start" style=" bg-yellow p-5 px-14 font-bold" onClick={startButton}/>
+					<Button title="Start" Stylee=" bg-yellow p-5 px-14 font-bold" onClick={startButton}/>
 				</div>
 				
 			</div>

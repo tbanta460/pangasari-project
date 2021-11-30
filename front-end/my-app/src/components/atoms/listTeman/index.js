@@ -2,13 +2,12 @@ import React, { useEffect, useState }  from 'react';
 import { useSelector } from 'react-redux'; 
 
 // Image
-import { ImgTeman } from '../../../assets';
 
 
 // Components
 import { Image, Gap, Nilai } from '..';
 
-const ListTeman = ({mobileStyle, listFriends, style, isStyle, data, checkMobile,nilaiQuizz}) => {
+const ListTeman = ({mobileStyle, listFriends, Stylee, isStyle, data, checkMobile,nilaiQuizz}) => {
     const { getMyUser } = useSelector(state => state.GetUserById);
     const [isName, setIsName] = useState("");
     const name = listFriends.firstName+ " " + listFriends.lastName
@@ -23,9 +22,9 @@ const ListTeman = ({mobileStyle, listFriends, style, isStyle, data, checkMobile,
     }, [data, getMyUser]);
     return (
         <>
-            <div className={checkMobile.length === 0 ? style : mobileStyle}>
+            <div className={checkMobile.length === 0 ? Stylee : mobileStyle}>
                 <div className={`flex sm:flex-row flex-col border-b-2 p-3 sm:items-start items-center ${name === isName ? "hidden" :"block"}`}>
-                    <Image src={`http://localhost:5000/${listFriends.image}`} alt="Gambar List Teman" style="mx-10 self-center w-32 h-32 rounded-full mb-5"/>
+                    <Image src={`http://localhost:5000/${listFriends.image}`} alt="Gambar List Teman" Stylee="mx-10 self-center w-32 h-32 rounded-full mb-5"/>
                     <div className="flex flex-col text-center sm:text-left">
                         <div>
                             <span className="block text-xl font-bold">Name: {name}</span>

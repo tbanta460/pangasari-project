@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Input = ({htmlfor, isStyle,label,id,type,ph,style,myStyle, selectStyle,...rest}) => {
+const Input = ({htmlfor, isStyle,label,id,type,ph,Stylee,myStyle,...rest}) => {
     return (
         <>
             <div className={`flex flex-col ${myStyle}`}>
-                <label htmlFor={htmlfor} className={style}>
+                <label htmlFor={htmlfor} className={Stylee}>
                     <span className="text-lg font-semibold">{label}</span>
                 </label>
                 <input type={type} placeholder={ph} id={id} {...rest} class={`w-60 p-2 rounded-full pl-4 outline-none focus:ring-4 my-2 border-4 focus:border-opacity-0 ${isStyle} ${id === "kelas" ? "hidden" : "block"}`} />

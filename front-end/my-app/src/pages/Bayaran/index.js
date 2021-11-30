@@ -1,4 +1,4 @@
-import Rect from 'react';
+import React from 'react';
 
 
 import { Input, Button, Gap } from '../../components/index.js'
@@ -25,7 +25,7 @@ const Bayaran = () => {
 							<li className="grid grid-cols-3">
 								{
 									myClass.map(data => {
-										return <Input type="radio" label={data} id={data} htmlfor={data} value={data} style="w-30" isStyle="w-1/2 outline-none focus:outline-none radios-none" name="Kelas:" />
+										return <Input type="radio" label={data} id={data} htmlfor={data} value={data} Stylee="w-30" isStyle="w-1/2 outline-none focus:outline-none radios-none" name="Kelas:" />
 									})
 								}
 							</li>
@@ -35,7 +35,7 @@ const Bayaran = () => {
 							</li>
 							<Gap WH="h-5" />
 						</ul>
-						<Button type="submit" title="Bayar" style="bg-blue-500"/>
+						<Button type="submit" title="Bayar" Stylee="bg-blue-500"/>
 					</form>
 				</div>
 			</div>

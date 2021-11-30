@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector} from 'react-redux';
-import { updateUser, setUser, setImageProfile, getUserById } from '../../../config/redux/action/setform.js';
+import { updateUser, setUser, getUserById } from '../../../config/redux/action/setform.js';
 
 // Assets
 import { IconUbahGambar } from '../../../assets';
@@ -21,8 +21,8 @@ const Profile = ({data}) => {
     
     useEffect(() => {
         const getDataById = async () => {
-            if(data._id !== undefined){
-                const dataUser = await getUserById("user/dashboard", data._id)
+            if(id !== undefined){
+                const dataUser = await getUserById("user/dashboard", id)
                 await setUserData(dataUser.data.data);
                 setchangeImage(false)
             }
@@ -31,20 +31,19 @@ const Profile = ({data}) => {
         
     },[ update, id, changeImage]);
     
+    console.log('loping')
     useEffect(() => {
-        const isDispatch = async () => {
-            if(update ){
-                await dispatch(setUser('fullName', userData.firstName + " " + userData.lastName));
-                await dispatch(setUser('tempatTanggalLahir', userData.tempatTanggalLahir));
-                await dispatch(setUser('tahunAjaran', userData.tahunAjaran));
-                await dispatch(setUser('age', userData.age));
-                await dispatch(setUser('kelas', userData.kelas));
-                await dispatch(setUser('point', userData.point))
-            }
+        if(update){
+            dispatch(setUser('fullName', userData.firstName + " " + userData.lastName));
+            dispatch(setUser('tempatTanggalLahir', userData.tempatTanggalLahir));
+            dispatch(setUser('tahunAjaran', userData.tahunAjaran));
+            dispatch(setUser('age', userData.age));
+            dispatch(setUser('kelas', userData.kelas));
+            dispatch(setUser('point', userData.point))
         }
-        isDispatch()
-        
-    },[dispatch, update]);
+    },[ dispatch, userData,update]);
+    
+    
     
     const handleImage = async (e) => {
         const file = e.target.files[0];
@@ -101,19 +100,19 @@ const Profile = ({data}) => {
                 <div className="w-full mx-auto py-10 flex flex-col sm:flex-row bg-white my-12 rounded-xl" >
                     <div className="w-3/5 mx-auto sm:m-0">
                         <div className=" ">
-                            <Image src={`http://localhost:5000/${userData.image}`} alt="Image untuk profile mahasiswa" style="w-32 h-32 rounded-full mx-auto relative" isStyle=" w-auto relative upload"/>
+                            <Image src={`http://localhost:5000/${userData.image}`} alt="Image untuk profile mahasiswa" Stylee="w-32 h-32 rounded-full mx-auto relative" isStyle=" w-auto relative upload"/>
                         </div>
                         <div>
                             <label for="type-file" >
                                 <input type="file" id="type-file" className="hidden" onChange={handleImage}/>
-                                <Image src={IconUbahGambar} isStyle="w-14 mx-auto my-5" alt="Image untuk mengganti gambar " style="w-10 h-10 mx-auto cursor-pointer"/>
+                                <Image src={IconUbahGambar} isStyle="w-14 mx-auto my-5" alt="Image untuk mengganti gambar " Stylee="w-10 h-10 mx-auto cursor-pointer"/>
                             </label>
                         </div>
                         <Gap WH="h-10" />
                         <div className="flex flex-row mx-auto justify-center">
-                            <Button title={`${update ? "Simpan" : "Edit Profile"}`} type="submit" style="bg-orange font-bold text-white" onClick={handleUpdate}/>
+                            <Button title={`${update ? "Simpan" : "Edit Profile"}`} type="submit" Stylee="bg-orange font-bold text-white" onClick={handleUpdate}/>
                             <Gap WH="w-8" /> 
-                            <Button title="Quizz" type="submit" style="bg-orange text-white font-bold" onClick={() => navigate(`quizz`)}/>
+                            <Button title="Quizz" type="submit" Stylee="bg-orange text-white font-bold" onClick={() => navigate(`quizz`)}/>
                         </div>
                     </div>
                     <div className="w-full sm:mt-0 mt-10">

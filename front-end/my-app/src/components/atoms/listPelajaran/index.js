@@ -18,7 +18,7 @@ const ListPelajaran = () => {
                                 <>
                                 <li>
                                 <Gap WH="h-3" />
-                                    <List style="none" name={data} isStyle="cursor-pointer"/>
+                                    <List Stylee="none" name={data} isStyle="cursor-pointer"/>
                                 </li>
                                 
                                 </>

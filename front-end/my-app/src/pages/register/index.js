@@ -2,26 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setRegister, registerPost } from '../../config/redux/action/setform.js';
-import { getErrorRegister } from '../../config/redux/action/getError.js';
 
 // Assets
-import { ImgRegister } from '../../assets';
 
 // Components
-import { Image, Gap, Button, Input } from '../../components/atoms';
+import { Gap, Button, Input } from '../../components/atoms';
 
 const Register = () => {
     const navigate = useNavigate();
     const myClass = ["10 Akutansi", "11 Akutansi", "12 Akutansi", "10 Pemasaran", "11 Pemasaran", "12 Pemasaran", "10 AP", "11 AP", "12 AP"]
-    const {register, errors} = useSelector(state => {
+    const {register} = useSelector(state => {
         return {
             register: state.SetForm.register, 
-            errors: state.GetError.errors 
         }
     });
     const [isError, setIsError] = useState({})
     const dispatch = useDispatch();
-    const {userName, email, firstName,lastName,password,confirmPassword, tempatTanggalLahir, tahunAjaran, kelas, age} = register;
+    const {userName, email, firstName,lastName,password,confirmPassword, tempatTanggalLahir, tahunAjaran, age} = register;
 
     const handleSubmit = (e) => {
         registerPost(register)
@@ -99,7 +96,7 @@ const Register = () => {
                                 <div className="grid grid-cols-3 relative">
                                     {
                                         myClass.map(data => {
-                                            return <Input type="radio" label={data} id={data} htmlfor={data} value={data} style="w-30" isStyle="w-1/2 outline-none focus:outline-none radios-none" name="kelas" onFocus={e => dispatch(setRegister("kelas", e.target.value))} myStyle="items-center"/>
+                                            return <Input type="radio" label={data} id={data} htmlfor={data} value={data} Stylee="w-30" isStyle="w-1/2 outline-none focus:outline-none radios-none" name="kelas" onFocus={e => dispatch(setRegister("kelas", e.target.value))} myStyle="items-center"/>
                                         })
                                     }
                                     <span className={`text-red-500 text-sm block absolute -bottom-5 right-0 left-0 mx-auto ${Object.keys(isError).length !== 0 ? "block":"hidden"}`}>{isError.kelas}</span>
@@ -134,7 +131,7 @@ const Register = () => {
                             </div>
                             <div>
                                 <Gap WH="h-10" />
-                                <Button type="submit" style="bg-orange px-7 py-4 text-white rounded-full" title="Register" onClick={handleSubmit}/>
+                                <Button type="submit" Stylee="bg-orange px-7 py-4 text-white rounded-full" title="Register" onClick={handleSubmit}/>
                                 <span className="sm:mx-8 ml-4 cursor-pointer" onClick={() => navigate('/login')}>Already Have an Account?</span>
                             </div>
                         </div>

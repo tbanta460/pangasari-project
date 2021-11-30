@@ -1,11 +1,10 @@
 
 import React from 'react'
-import { BrowserRouter as Router, Routes,Route} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 
 // Components
 import { Routess } from '../config/index';
 import { Header, Footer } from '../components'
-import {Dashboard, Login, Register, Home} from './index'
 
 function Main() {
   return (
