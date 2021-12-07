@@ -2,7 +2,6 @@ const multer = require('multer');
 
 exports.fileStorage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		// Mengatur nama folder yag akan dijadikan path
 		cb(null, 'image')
 	},
 	filename: (req,file,cb) => {

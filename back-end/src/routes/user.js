@@ -13,8 +13,6 @@ const bodyUserName = body('userName')
                     	.withMessage('Masukkan karakter minimal 5')
                     	.custom(async (value) => {
                     		return await User.getUserByUserName(value).then(user => {
-                    			// console.log(user.userName, " <<< dari routes")
-                    			// console.log(user.userName === value)
                     			if(user){
                     				return Promise.reject(value + " sudah terdaftar")
                     			}

@@ -108,7 +108,7 @@ exports.updateData = (req,res,next) => {
 			data: respone
 		})
 	})
-	.catch(err => console.log(err))
+	.catch(err => res.status(404).send({message:"Terjadi kesalahan ketika memuat data."}))
 }
 
 const isError = (errors, status, message) => {

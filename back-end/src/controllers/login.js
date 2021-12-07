@@ -44,7 +44,6 @@ exports.getUser = (req,res,next) => {
 	User.findById(idUser)
 	.then(user => {
 		if(user){
-			// res.redirect({url: "http://localhost:3000/user/dashboard"})
 			res.status(200).json({
 				data: user
 			})

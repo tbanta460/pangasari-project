@@ -5,7 +5,7 @@ const hashedPassword = require('../hashedPassword/hashedPassword.js')
 exports.createUser = (req,res,next) => {
 	const {userName, email, firstName, lastName,kelas,age, tempatTanggalLahir, tahunAjaran, password, confirmPassword} = req.body;
 	const errors = validationResult(req);
-	console.log(req.body)
+	
 	if(!errors.isEmpty()){
 		const err = new Error('Terjadi kesalahan saat mendaftar')
 		err.errorStatus = 400;
